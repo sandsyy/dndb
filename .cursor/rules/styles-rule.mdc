@@ -1,0 +1,5 @@
+---
+alwaysApply: true
+---
+
+Always default to using the styles.scss variables before creating new hexcodes. Additionally, try to avoid creating a bunch of one-off classes vs using existing ones.

@@ -12,12 +12,14 @@ import { CommonModule } from '@angular/common';
 export class RollComponent {
 
   @Input({ required: true }) type: string;
+  @Input() mainValue: string;
   @Input() iconName: string;
   @Input() altValue: string;
 
   constructor() {
     this.type = '';
-    this.iconName = 'Dice6';
+    this.mainValue = '';
+    this.iconName = '';
     this.altValue = '';
   }
 }

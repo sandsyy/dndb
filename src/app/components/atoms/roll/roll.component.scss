@@ -1,0 +1,97 @@
+@use '../../../../styles' as *;
+
+:host {
+    display: flex;
+}
+
+// Shared
+.fill {
+    flex: 1;
+}
+
+.horizontal,
+.static {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 12px;
+
+    h4 {
+        color: $primary-100;
+    }
+
+    p {
+        color: $primary-50;
+    }
+}
+
+.horizontal {
+    cursor: pointer;
+    background-color: transparent;
+
+    &:hover {
+        background-color: $primary-10;
+    }
+
+    &:active {
+        background-color: $primary-20;
+    }
+}
+
+.static {
+    background-color: $primary-10;
+    cursor: default;
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    height: 58px;
+    width: 84px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background-color: $primary-10;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $primary-10;
+    }
+
+    &:active {
+        background-color: $primary-20;
+    }
+
+    // Ensure the header row aligns content nicely when present
+    .flex-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 74px;
+    width: 100px;
+    background-color: $primary-10;
+    border-radius: 12px;
+    cursor: pointer;
+
+    &:active {
+        background-color: $primary-20;
+    }
+}
+
+// Icon sizing consistency inside roll
+app-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+

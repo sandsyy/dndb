@@ -1,0 +1,20 @@
+@use '../../../styles' as *;
+
+:host {
+    display: flex;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.header .tab-group {
+    border: 1px solid $primary-20;
+    border-radius: 8px;
+    overflow: hidden;
+}
+

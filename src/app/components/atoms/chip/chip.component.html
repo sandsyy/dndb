@@ -6,7 +6,7 @@
     </div>
     <div class="chip-content">
         @if (content === 'roll') {
-            <app-roll [type]="type"></app-roll>
+            <app-roll [type]="type" [mainValue]="content"></app-roll>
         }
         @else if (content === 'paragraph') {
             <p>

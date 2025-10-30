@@ -24,7 +24,7 @@ export interface Monster {
   challenge_rating?: number;
   proficiency_bonus?: number;
   hit_points?: number;
-  armor_class?: number | { value: number; type?: string }[];
+  armor_class: { value: number; type?: string }[];
   speed?: Record<string, string>;
   // Many more fields exist per docs; add as needed
 }

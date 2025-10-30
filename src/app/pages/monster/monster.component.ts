@@ -1,11 +1,13 @@
 import { Component, Inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { TabComponent } from '../../components/atoms/tab/tab.component';
+import { RollComponent } from '../../components/atoms/roll/roll.component';
 import { Dnd5eService, Monster } from '../../services/dnd-5e.service';
 
 @Component({
   selector: 'app-monster',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, TabComponent, RollComponent],
   templateUrl: './monster.component.html',
   styleUrl: './monster.component.scss'
 })

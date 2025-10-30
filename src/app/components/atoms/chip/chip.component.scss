@@ -1,0 +1,31 @@
+.chip {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 6px;
+    width: 100%;
+}
+
+.chip-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.chip-header-text {
+    color: $primary-50;
+}
+
+.chip-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+// Optional right-side cap divider, add class "cap" on the root .chip
+.chip.cap {
+    box-shadow: inset -1px 0 0 0 $primary-20;
+}
+

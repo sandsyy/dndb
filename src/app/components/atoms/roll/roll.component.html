@@ -1,24 +1,23 @@
 @if (type === 'row' || type === 'static') {
-    <div [ngClass]="{'horizontal': type === 'row', 'static': type === 'static'}">
-        <h4 class="fill">
-            <ng-content select=".header-text"></ng-content>
-        </h4>
-        @if (altValue) { <p>{{altValue}}</p> }
-        <app-icon *ngIf="iconName" [name]="iconName"></app-icon>
+<div [ngClass]="{'horizontal': type === 'row', 'static': type === 'static'}">
+    <h4 class="fill">
+        <ng-content select=".header-text"></ng-content>
+    </h4>
+    @if (altValue) { <p>{{altValue}}</p> }
+    <app-icon *ngIf="iconName" [name]="iconName"></app-icon>
+</div>
+}
+@else if (type === 'column') {
+<div class="vertical">
+    <div class="flex-row justify-center">
+        <h4>{{mainValue}}</h4>
+        @if (iconName) { <app-icon [name]="iconName"></app-icon> }
     </div>
+    @if (altValue) { <p class="medium">{{altValue}}</p> }
+</div>
 }
 @else {
-    <div class="vertical">
-        @if (type === 'column') {
-            <div class="flex-row">
-                <h4>
-                    <ng-content select=".header-text"></ng-content>
-                </h4>
-                <app-icon *ngIf="iconName" [name]="iconName"></app-icon>
-            </div>
-        }
-        @else if (type === 'icon') {
-            <app-icon *ngIf="iconName" [name]="iconName"></app-icon>
-        }
-    </div>
+<div class="icon">
+    <app-icon [name]="iconName"></app-icon>
+</div>
 }
