@@ -1,11 +1,11 @@
 import { Component, Inject, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 import { TabComponent } from '../../atoms/tab/tab.component';
 
 @Component({
     selector: 'app-tab-group',
-    imports: [CommonModule, TabComponent],
+    imports: [TabComponent],
     templateUrl: './tab-group.component.html',
     styleUrl: './tab-group.component.scss'
 })
