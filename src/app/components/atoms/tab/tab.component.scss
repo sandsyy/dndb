@@ -1,0 +1,38 @@
+@use '../../../../styles' as *;
+
+:host {
+    display: flex;
+    width: 100%;
+}
+
+.tab {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 2px;
+    width: 100%;
+    cursor: pointer;
+    background-color: $secondary-100;
+
+    &:hover {
+        background-color: $primary-10;
+
+        .tab-text {
+            color: $primary-100;
+        }
+    }
+
+    &.selected {
+        background-color: $primary-100;
+    }
+}
+
+.tab-text {
+    color: $primary-100;
+
+    &.alt {
+        color: $secondary-100;
+    }
+}

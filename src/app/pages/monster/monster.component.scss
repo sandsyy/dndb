@@ -13,7 +13,11 @@
 }
 
 .header .tab-group {
-    border: 1px solid $primary-20;
+    display: flex;
+    flex-direction: row;
+    gap: 1px;
+    background-color: $primary-20;
+    box-shadow: 0 0 0 1px $primary-20;
     border-radius: 8px;
     overflow: hidden;
 }

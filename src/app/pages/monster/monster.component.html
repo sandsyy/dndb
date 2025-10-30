@@ -20,11 +20,8 @@
             </div>
         </div>
 
-        <div class="tab-group width-full">
-            <app-tab title="Vitals"></app-tab>
-            <app-tab title="Abilities"></app-tab>
-            <app-tab title="Actions"></app-tab>
-        </div>
+        <app-tab-group class="width-full" [monsterId]="id"></app-tab-group>
+
     </div>
 
     <router-outlet></router-outlet>
