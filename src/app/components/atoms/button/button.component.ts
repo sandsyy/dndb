@@ -1,7 +1,29 @@
-import { Component, Input } from '@angular/core';
-import { IconComponent } from '../icon/icon.component';
+// import { Component, Input } from '@angular/core';
+// import { IconComponent } from '../icon/icon.component';
 
-@Component({
+import figma, { html } from '@figma/code-connect/html';
+
+figma.connect('https://...', {
+  props: {
+    text: figma.string('Text'),
+    disabled: figma.boolean('Disabled'),
+    size: figma.enum('Size', {
+      'small': 'sm',
+      'large': 'lg'
+    })
+  },
+  example: (props) =>
+    html`\
+<button class="button">
+    <app-icon *ngIf="leftIcon" [name]="leftIcon"></app-icon>
+    <span class="button-text">
+        <ng-content></ng-content>
+    </span>
+    <app-icon *ngIf="rightIcon" [name]="rightIcon"></app-icon>
+</button>
+
+<script>
+  @Component({
   selector: 'app-button',
   standalone: true,
   imports: [IconComponent],
@@ -18,3 +40,7 @@ export class ButtonComponent {
     this.rightIcon = '';
   }
 }
+</script>`,
+  imports: ["import { DsButton } from '@ds-angular/button'"],
+}
+)
