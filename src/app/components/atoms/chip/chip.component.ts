@@ -10,11 +10,15 @@ import { RollComponent } from '../roll/roll.component';
 })
 export class ChipComponent {
 
-  @Input({ required: true }) content: string;
-  @Input() type: string;
+  @Input() content: string;
+  @Input({ required: true }) type: string;
+  @Input() altValue: string;
+  @Input() header: string;
 
   constructor() {
-    this.content = 'roll';
-    this.type = '';
+    this.content = '';
+    this.type = 'roll';
+    this.altValue = '';
+    this.header = '';
   }
 }

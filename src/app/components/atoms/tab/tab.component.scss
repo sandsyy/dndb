@@ -26,13 +26,13 @@
 
     &.selected {
         background-color: $primary-100;
+
+        .tab-text {
+            color: $secondary-100;
+        }
     }
 }
 
 .tab-text {
     color: $primary-100;
-
-    &.alt {
-        color: $secondary-100;
-    }
 }

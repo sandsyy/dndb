@@ -1,7 +1,7 @@
 @if (type === 'row' || type === 'static') {
-<div [ngClass]="{'horizontal': type === 'row', 'static': type === 'static'}">
+<div class="fill" [ngClass]="{'horizontal': type === 'row', 'static': type === 'static'}">
     <h4 class="fill">
-        <ng-content select=".header-text"></ng-content>
+        {{mainValue}}
     </h4>
     @if (altValue) { <p>{{altValue}}</p> }
     <app-icon *ngIf="iconName" [name]="iconName"></app-icon>

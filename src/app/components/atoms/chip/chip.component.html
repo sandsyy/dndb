@@ -1,14 +1,12 @@
 <div class="chip">
     <div class="chip-header">
-        <p class="chip-header-text">
-            <ng-content select=".header-text"></ng-content>
-        </p>
+        <p class="chip-header-text">{{header}}</p>
     </div>
     <div class="chip-content">
-        @if (content === 'roll') {
-            <app-roll [type]="type" [mainValue]="content"></app-roll>
+        @if (type === 'roll') {
+            <app-roll [type]="'row'" [mainValue]="content" [altValue]="altValue"></app-roll>
         }
-        @else if (content === 'paragraph') {
+        @else if (type === 'paragraph') {
             <p>
                 <ng-content select=".content-text"></ng-content>
             </p>

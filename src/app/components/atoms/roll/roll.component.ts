@@ -19,7 +19,7 @@ export class RollComponent {
   constructor() {
     this.type = '';
     this.mainValue = '';
-    this.iconName = '';
+    this.iconName = 'Dice6';
     this.altValue = '';
   }
 }
