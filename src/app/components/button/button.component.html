@@ -1,1 +1,7 @@
-<p>button works!</p>
+<button class="button">
+    <app-icon *ngIf="leftIcon" [name]="leftIcon"></app-icon>
+    <span class="button-text">
+        <ng-content></ng-content>
+    </span>
+    <app-icon *ngIf="rightIcon" [name]="rightIcon"></app-icon>
+</button>
