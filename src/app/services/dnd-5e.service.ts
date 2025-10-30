@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 // Minimal types matching the D&D 5e API for monsters
 export interface ApiReference {
@@ -99,6 +100,9 @@ export class Dnd5eService {
   // 5e SRD API base; see docs
   // Docs: https://5e-bits.github.io/docs/api
   private readonly apiBaseUrl = 'https://www.dnd5eapi.co/api';
+  
+  // Cache for monster data to avoid repeated API calls
+  private monsterCache = new Map<string, Observable<Monster>>();
 
   constructor(private readonly http: HttpClient) {}
 
@@ -121,9 +125,30 @@ export class Dnd5eService {
   /**
    * Get monster by index.
    * Docs: https://5e-bits.github.io/docs/api/get-monster-by-index
+   * Uses caching to avoid repeated API calls for the same monster.
    */
   getMonsterByIndex(index: string): Observable<Monster> {
-    return this.http.get<Monster>(`${this.apiBaseUrl}/monsters/${encodeURIComponent(index)}`);
+    // Check if the monster is already in cache
+    if (!this.monsterCache.has(index)) {
+      // If not cached, make the API call and cache it with shareReplay
+      const monster$ = this.http.get<Monster>(`${this.apiBaseUrl}/monsters/${encodeURIComponent(index)}`).pipe(
+        shareReplay(1) // Cache the last emitted value and replay it to new subscribers
+      );
+      this.monsterCache.set(index, monster$);
+    }
+    
+    return this.monsterCache.get(index)!;
+  }
+  
+  /**
+   * Clear the monster cache. Useful if you need to force refresh data.
+   */
+  clearMonsterCache(index?: string): void {
+    if (index) {
+      this.monsterCache.delete(index);
+    } else {
+      this.monsterCache.clear();
+    }
   }
 }
 

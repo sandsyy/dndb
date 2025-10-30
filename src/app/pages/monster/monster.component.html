@@ -1,28 +1,35 @@
 <div class="content align-center width-full xxlarge">
-    <div class="width-full header">
-        <div class="flex-row justify-between align-center width-full large">
-            <div class="flex-col">
-                <h2 class="primary-100">{{ monster.name }}</h2>
-                <div class="flex-row">
-                    <p class="primary-100">{{ monster.size }} {{ monster.type }}</p>
-                    <p class="medium">{{ monster.alignment }}</p>
+    @if (isLoading) {
+        <div class="loading-container">
+            <app-spinner size="large"></app-spinner>
+            <p class="medium">Loading monster data...</p>
+        </div>
+    } @else {
+        <div class="width-full header">
+            <div class="flex-row justify-between align-center width-full large">
+                <div class="flex-col">
+                    <h2 class="primary-100">{{ monster.name }}</h2>
+                    <div class="flex-row">
+                        <p class="primary-100">{{ monster.size }} {{ monster.type }}</p>
+                        <p class="medium">{{ monster.alignment }}</p>
+                    </div>
+                </div>
+                <div class="flex-row large align-center">
+                    <div class="flex-col align-center">
+                        <p class="medium">Inspiration</p>
+                        <app-roll type="icon" [iconName]="'Sun'"></app-roll>
+                    </div>
+                    <div class="flex-col align-center">
+                        <p class="medium">Armor Class</p>
+                        <app-roll type="column" [mainValue]="monster.armor_class[0].value.toString()" [altValue]="'Natural'"></app-roll>
+                    </div>
                 </div>
             </div>
-            <div class="flex-row large align-center">
-                <div class="flex-col align-center">
-                    <p class="medium">Inspiration</p>
-                    <app-roll type="icon" [iconName]="'Sun'"></app-roll>
-                </div>
-                <div class="flex-col align-center">
-                    <p class="medium">Armor Class</p>
-                    <app-roll type="column" [mainValue]="monster.armor_class[0].value.toString()" [altValue]="'Natural'"></app-roll>
-                </div>
-            </div>
+
+            <app-tab-group class="width-full" [monsterId]="id"></app-tab-group>
+
         </div>
 
-        <app-tab-group class="width-full" [monsterId]="id"></app-tab-group>
-
-    </div>
-
-    <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
+    }
 </div>
