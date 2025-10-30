@@ -3,11 +3,10 @@ import { IconComponent } from '../icon/icon.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-roll',
-  standalone: true,
-  imports: [IconComponent, CommonModule],
-  templateUrl: './roll.component.html',
-  styleUrl: './roll.component.scss'
+    selector: 'app-roll',
+    imports: [IconComponent, CommonModule],
+    templateUrl: './roll.component.html',
+    styleUrl: './roll.component.scss'
 })
 export class RollComponent {
 

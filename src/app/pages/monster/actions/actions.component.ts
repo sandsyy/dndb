@@ -4,11 +4,10 @@ import { ChipComponent } from '../../../components/atoms/chip/chip.component';
 import { MonsterComponent } from '../monster.component';
 
 @Component({
-  selector: 'app-actions',
-  standalone: true,
-  imports: [ChipComponent],
-  templateUrl: './actions.component.html',
-  styleUrl: './actions.component.scss'
+    selector: 'app-actions',
+    imports: [ChipComponent],
+    templateUrl: './actions.component.html',
+    styleUrl: './actions.component.scss'
 })
 export class ActionsComponent {
   monster: Monster;

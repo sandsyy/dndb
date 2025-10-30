@@ -1,11 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-tab',
-  standalone: true,
-  imports: [],
-  templateUrl: './tab.component.html',
-  styleUrl: './tab.component.scss'
+    selector: 'app-tab',
+    imports: [],
+    templateUrl: './tab.component.html',
+    styleUrl: './tab.component.scss'
 })
 export class TabComponent {
   @Input() title: string;

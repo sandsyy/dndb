@@ -2,11 +2,10 @@ import { Component, Input } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
-  selector: 'app-icon',
-  standalone: true,
-  imports: [LucideAngularModule],
-  templateUrl: './icon.component.html',
-  styleUrl: './icon.component.scss'
+    selector: 'app-icon',
+    imports: [LucideAngularModule],
+    templateUrl: './icon.component.html',
+    styleUrl: './icon.component.scss'
 })
 export class IconComponent {
   @Input({ required: true }) name: string;

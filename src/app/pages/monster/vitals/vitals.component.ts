@@ -5,11 +5,10 @@ import { RollComponent } from '../../../components/atoms/roll/roll.component';
 import { MonsterComponent } from '../monster.component';
 
 @Component({
-  selector: 'app-vitals',
-  standalone: true,
-  imports: [ChipComponent, RollComponent],
-  templateUrl: './vitals.component.html',
-  styleUrl: './vitals.component.scss'
+    selector: 'app-vitals',
+    imports: [ChipComponent, RollComponent],
+    templateUrl: './vitals.component.html',
+    styleUrl: './vitals.component.scss'
 })
 export class VitalsComponent {
   monster: Monster;

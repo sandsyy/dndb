@@ -4,11 +4,10 @@ import { CommonModule } from '@angular/common';
 import { TabComponent } from '../../atoms/tab/tab.component';
 
 @Component({
-  selector: 'app-tab-group',
-  standalone: true,
-  imports: [CommonModule, TabComponent],
-  templateUrl: './tab-group.component.html',
-  styleUrl: './tab-group.component.scss'
+    selector: 'app-tab-group',
+    imports: [CommonModule, TabComponent],
+    templateUrl: './tab-group.component.html',
+    styleUrl: './tab-group.component.scss'
 })
 export class TabGroupComponent {
   @Input() monsterId: string = '';
