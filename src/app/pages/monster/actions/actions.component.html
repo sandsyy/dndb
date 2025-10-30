@@ -1,1 +1,81 @@
-<p>actions works!</p>
+<div class="actions-content">
+    @if (monster.actions && monster.actions.length > 0) {
+        <div class="actions-layout">
+            <!-- Left Column -->
+            <div class="actions-column">
+                @for (action of getLeftColumnActions(); track action.name) {
+                    <div class="action-card">
+                        <!-- Title and Description Section -->
+                        <div class="action-header">
+                            <h4 class="action-title">{{ action.name }}</h4>
+                            <p class="action-description">{{ action.desc }}</p>
+                        </div>
+                        
+                        <!-- Hit and Damage Row (only for actions with attack data) -->
+                        @if (hasAttackData(action)) {
+                            <div class="action-stats">
+                                <app-chip 
+                                    [header]="'Hit'" 
+                                    [type]="'roll'" 
+                                    [content]="formatAttackBonus(action.attack_bonus)"
+                                    [altValue]="extractReach(action.desc)"
+                                    class="stat-chip">
+                                </app-chip>
+                                
+                                <div class="divider-vertical"></div>
+                                
+                                <app-chip 
+                                    [header]="'Damage'" 
+                                    [type]="'roll'" 
+                                    [content]="action.damage && action.damage[0] ? formatDamageDice(action.damage[0].damage_dice) : ''"
+                                    [altValue]="action.damage && action.damage[0] ? action.damage[0].damage_type.name : ''"
+                                    class="stat-chip">
+                                </app-chip>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+
+            <!-- Right Column -->
+            <div class="actions-column">
+                @for (action of getRightColumnActions(); track action.name) {
+                    <div class="action-card">
+                        <!-- Title and Description Section -->
+                        <div class="action-header">
+                            <h4 class="action-title">{{ action.name }}</h4>
+                            <p class="action-description">{{ action.desc }}</p>
+                        </div>
+                        
+                        <!-- Hit and Damage Row (only for actions with attack data) -->
+                        @if (hasAttackData(action)) {
+                            <div class="action-stats">
+                                <app-chip 
+                                    [header]="'Hit'" 
+                                    [type]="'roll'" 
+                                    [content]="formatAttackBonus(action.attack_bonus)"
+                                    [altValue]="extractReach(action.desc)"
+                                    class="stat-chip">
+                                </app-chip>
+                                
+                                <div class="divider-vertical"></div>
+                                
+                                <app-chip 
+                                    [header]="'Damage'" 
+                                    [type]="'roll'" 
+                                    [content]="action.damage && action.damage[0] ? formatDamageDice(action.damage[0].damage_dice) : ''"
+                                    [altValue]="action.damage && action.damage[0] ? action.damage[0].damage_type.name : ''"
+                                    class="stat-chip">
+                                </app-chip>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    } @else {
+        <div class="empty-state">
+            <p class="medium">No actions available</p>
+        </div>
+    }
+</div>

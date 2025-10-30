@@ -23,9 +23,62 @@ export interface Monster {
   alignment?: string;
   challenge_rating?: number;
   proficiency_bonus?: number;
+  xp?: number;
   hit_points?: number;
   armor_class: { value: number; type?: string }[];
   speed?: Record<string, string>;
+  strength?: number;
+  dexterity?: number;
+  constitution?: number;
+  intelligence?: number;
+  wisdom?: number;
+  charisma?: number;
+  proficiencies?: Array<{
+    value: number;
+    proficiency: {
+      index: string;
+      name: string;
+      url: string;
+    };
+  }>;
+  senses?: {
+    darkvision?: string;
+    blindsight?: string;
+    tremorsense?: string;
+    truesight?: string;
+    passive_perception?: number;
+  };
+  damage_vulnerabilities?: string[];
+  damage_resistances?: string[];
+  damage_immunities?: string[];
+  condition_immunities?: Array<{
+    index: string;
+    name: string;
+    url: string;
+  }>;
+  special_abilities?: Array<{
+    name: string;
+    desc: string;
+  }>;
+  actions?: Array<{
+    name: string;
+    desc: string;
+    attack_bonus?: number;
+    damage?: Array<{
+      damage_dice: string;
+      damage_type: {
+        index: string;
+        name: string;
+        url: string;
+      };
+    }>;
+    multiattack_type?: string;
+    actions?: Array<{
+      action_name: string;
+      count: string;
+      type: string;
+    }>;
+  }>;
   // Many more fields exist per docs; add as needed
 }
 

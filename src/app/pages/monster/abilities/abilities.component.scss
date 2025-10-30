@@ -1,0 +1,48 @@
+@use '../../../../styles' as *;
+
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.abilities-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+// Abilities grid container
+.abilities-grid {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $primary-20;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+}
+
+// Each row in the grid
+.abilities-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+
+    // Add horizontal divider between rows
+    &:not(:last-child) {
+        border-bottom: 1px solid $primary-20;
+    }
+
+    .ability-chip {
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+// Vertical dividers between chips
+.divider-vertical {
+    width: 1px;
+    background-color: $primary-20;
+    align-self: stretch;
+}

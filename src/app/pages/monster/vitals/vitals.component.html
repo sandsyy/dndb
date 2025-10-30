@@ -1,0 +1,207 @@
+<div class="vitals-content">
+    <!-- Challenge Rating, Proficiency Bonus, and XP Row -->
+    <div class="stats-row">
+        <app-chip 
+            [header]="'Challenge Rating'" 
+            [type]="'roll'" 
+            [content]="monster.challenge_rating?.toString() || '0'"
+            class="stat-chip">
+        </app-chip>
+        
+        <div class="divider-vertical"></div>
+        
+        <app-chip 
+            [header]="'Proficiency Bonus'" 
+            [type]="'roll'" 
+            [content]="monster.proficiency_bonus?.toString() || '0'"
+            class="stat-chip">
+        </app-chip>
+        
+        <div class="divider-vertical"></div>
+        
+        <app-chip 
+            [header]="'XP'" 
+            [type]="'roll'" 
+            [content]="monster.xp?.toString() || '0'"
+            class="stat-chip">
+        </app-chip>
+    </div>
+
+    <!-- Two Column Layout -->
+    <div class="two-column-layout">
+        <!-- Left Column -->
+        <div class="column">
+            <!-- Proficiencies Section -->
+            <div class="section-wrapper">
+                <p class="section-title primary-100">Proficiencies</p>
+                
+                @if (monster.proficiencies && monster.proficiencies.length > 0) {
+                    <div class="section">
+                        @for (proficiency of monster.proficiencies; track proficiency.proficiency.index; let isLast = $last) {
+                            <app-chip 
+                                [header]="getSkillName(proficiency.proficiency.name)" 
+                                [type]="'roll'" 
+                                [content]="proficiency.value.toString()">
+                            </app-chip>
+                            @if (!isLast) {
+                                <div class="divider-horizontal"></div>
+                            }
+                        }
+                    </div>
+                } @else {
+                    <div class="section empty-state">
+                        <p class="medium">None</p>
+                    </div>
+                }
+            </div>
+
+            <!-- Special Abilities Section -->
+            <div class="section-wrapper">
+                <p class="section-title primary-100">Special Abilities</p>
+                
+                @if (monster.special_abilities && monster.special_abilities.length > 0) {
+                    <div class="section">
+                        @for (ability of monster.special_abilities; track ability.name; let isLast = $last) {
+                            <app-chip 
+                                [header]="ability.name" 
+                                [type]="'paragraph'">
+                                <p class="content-text">{{ ability.desc }}</p>
+                            </app-chip>
+                            @if (!isLast) {
+                                <div class="divider-horizontal"></div>
+                            }
+                        }
+                    </div>
+                } @else {
+                    <div class="section empty-state">
+                        <p class="medium">None</p>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="column">
+            <!-- Senses Section -->
+            <div class="section-wrapper">
+                <p class="section-title primary-100">Senses</p>
+                
+                @if (getSenseEntries().length > 0) {
+                    <div class="section">
+                        @for (sense of getSenseEntries(); track sense.name; let isLast = $last) {
+                            <app-chip 
+                                [header]="sense.name" 
+                                [type]="'roll'" 
+                                [content]="sense.value"
+                                [altValue]="monster.senses?.passive_perception ? 'Passive Perception: ' + monster.senses?.passive_perception : ''">
+                            </app-chip>
+                            @if (!isLast) {
+                                <div class="divider-horizontal"></div>
+                            }
+                        }
+                    </div>
+                } @else {
+                    <div class="section empty-state">
+                        <p class="medium">None</p>
+                    </div>
+                }
+            </div>
+
+            <!-- Vulnerabilities Section -->
+            <div class="section-wrapper">
+                <p class="section-title primary-100">Vulnerabilities</p>
+                
+                @if (monster.damage_vulnerabilities && monster.damage_vulnerabilities.length > 0) {
+                    <div class="section">
+                        @for (vulnerability of monster.damage_vulnerabilities; track vulnerability; let isLast = $last) {
+                            <app-chip 
+                                [header]="vulnerability" 
+                                [type]="'roll'" 
+                                [content]="''">
+                            </app-chip>
+                            @if (!isLast) {
+                                <div class="divider-horizontal"></div>
+                            }
+                        }
+                    </div>
+                } @else {
+                    <div class="section empty-state">
+                        <p class="medium">None</p>
+                    </div>
+                }
+            </div>
+
+            <!-- Damage Resistances Section -->
+            <div class="section-wrapper">
+                <p class="section-title primary-100">Damage Resistances</p>
+                
+                @if (monster.damage_resistances && monster.damage_resistances.length > 0) {
+                    <div class="section">
+                        @for (resistance of monster.damage_resistances; track resistance; let isLast = $last) {
+                            <app-chip 
+                                [header]="resistance" 
+                                [type]="'roll'" 
+                                [content]="''">
+                            </app-chip>
+                            @if (!isLast) {
+                                <div class="divider-horizontal"></div>
+                            }
+                        }
+                    </div>
+                } @else {
+                    <div class="section empty-state">
+                        <p class="medium">None</p>
+                    </div>
+                }
+            </div>
+
+            <!-- Damage Immunities Section -->
+            <div class="section-wrapper">
+                <p class="section-title primary-100">Damage Immunities</p>
+                
+                @if (monster.damage_immunities && monster.damage_immunities.length > 0) {
+                    <div class="section">
+                        @for (immunity of monster.damage_immunities; track immunity; let isLast = $last) {
+                            <app-chip 
+                                [header]="immunity" 
+                                [type]="'roll'" 
+                                [content]="''">
+                            </app-chip>
+                            @if (!isLast) {
+                                <div class="divider-horizontal"></div>
+                            }
+                        }
+                    </div>
+                } @else {
+                    <div class="section empty-state">
+                        <p class="medium">None</p>
+                    </div>
+                }
+            </div>
+
+            <!-- Condition Immunities Section -->
+            <div class="section-wrapper">
+                <p class="section-title primary-100">Condition Immunities</p>
+                
+                @if (monster.condition_immunities && monster.condition_immunities.length > 0) {
+                    <div class="section">
+                        @for (immunity of monster.condition_immunities; track immunity.index; let isLast = $last) {
+                            <app-chip 
+                                [header]="immunity.name" 
+                                [type]="'roll'" 
+                                [content]="''">
+                            </app-chip>
+                            @if (!isLast) {
+                                <div class="divider-horizontal"></div>
+                            }
+                        }
+                    </div>
+                } @else {
+                    <div class="section empty-state">
+                        <p class="medium">None</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

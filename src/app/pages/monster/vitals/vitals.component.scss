@@ -1,7 +1,93 @@
+@use '../../../../styles' as *;
+
 :host {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 16px;
+    gap: 32px;
 }
-    
+
+.vitals-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+}
+
+// Stats row at the top (CR, Proficiency Bonus, XP)
+.stats-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    border: 1px solid $primary-20;
+    border-radius: 12px;
+    overflow: hidden;
+
+    .stat-chip {
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+// Two column layout
+.two-column-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+// Section wrapper (includes title + section)
+.section-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.section-title {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.32px;
+}
+
+// Section container (border box with chips inside)
+.section {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $primary-20;
+    border-radius: 12px;
+    overflow: hidden;
+
+    // Remove default chip padding for full-width effect
+    app-chip {
+        width: 100%;
+    }
+
+    &.empty-state {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        padding: 12px;
+    }
+}
+
+// Dividers
+.divider-vertical {
+    width: 1px;
+    background-color: $primary-20;
+    align-self: stretch;
+}
+
+.divider-horizontal {
+    height: 1px;
+    width: 100%;
+    background-color: $primary-20;
+}

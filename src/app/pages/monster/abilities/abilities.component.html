@@ -1,1 +1,66 @@
-<p>abilities works!</p>
+<div class="abilities-content">
+    <!-- Ability Scores Grid -->
+    <div class="abilities-grid">
+        <!-- Row 1: Strength, Constitution, Wisdom -->
+        <div class="abilities-row">
+            <app-chip 
+                [header]="'Strength'" 
+                [type]="'roll'" 
+                [content]="getModifier(monster.strength)"
+                [altValue]="monster.strength?.toString() || '0'"
+                class="ability-chip">
+            </app-chip>
+            
+            <div class="divider-vertical"></div>
+            
+            <app-chip 
+                [header]="'Stamina'" 
+                [type]="'roll'" 
+                [content]="getModifier(monster.constitution)"
+                [altValue]="monster.constitution?.toString() || '0'"
+                class="ability-chip">
+            </app-chip>
+            
+            <div class="divider-vertical"></div>
+            
+            <app-chip 
+                [header]="'Wisdom'" 
+                [type]="'roll'" 
+                [content]="getModifier(monster.wisdom)"
+                [altValue]="monster.wisdom?.toString() || '0'"
+                class="ability-chip">
+            </app-chip>
+        </div>
+        
+        <!-- Row 2: Dexterity, Charisma, Intelligence -->
+        <div class="abilities-row">
+            <app-chip 
+                [header]="'Agility'" 
+                [type]="'roll'" 
+                [content]="getModifier(monster.dexterity)"
+                [altValue]="monster.dexterity?.toString() || '0'"
+                class="ability-chip">
+            </app-chip>
+            
+            <div class="divider-vertical"></div>
+            
+            <app-chip 
+                [header]="'Charisma'" 
+                [type]="'roll'" 
+                [content]="getModifier(monster.charisma)"
+                [altValue]="monster.charisma?.toString() || '0'"
+                class="ability-chip">
+            </app-chip>
+            
+            <div class="divider-vertical"></div>
+            
+            <app-chip 
+                [header]="'Intelligence'" 
+                [type]="'roll'" 
+                [content]="getModifier(monster.intelligence)"
+                [altValue]="monster.intelligence?.toString() || '0'"
+                class="ability-chip">
+            </app-chip>
+        </div>
+    </div>
+</div>
