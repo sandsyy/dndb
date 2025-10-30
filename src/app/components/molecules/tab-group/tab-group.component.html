@@ -1,0 +1,10 @@
+<div class="tab-group width-full">
+    <app-tab *ngFor="let item of items"
+             [title]="item.label"
+             [selected]="isSelected(item)"
+             (click)="onSelect(item)"></app-tab>
+    
+    <!-- The container styling for .tab-group is defined in global styles.scss -->
+</div>
+
+

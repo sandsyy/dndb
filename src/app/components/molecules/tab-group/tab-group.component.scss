@@ -1,0 +1,10 @@
+@use '../../../../styles' as *;
+
+:host {
+    display: block;
+    width: 100%;
+}
+
+// Leverage global .tab-group styles from styles.scss
+
+

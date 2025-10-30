@@ -1,3 +1,4 @@
-<button class="tab">
-    <p class="tab-text">{{ title }}</p>
+<button type="button" class="tab" [class.selected]="selected" [disabled]="disabled">
+    <span class="tab__label">{{ title }}</span>
+    <span class="tab__fill" aria-hidden="true"></span>
 </button>

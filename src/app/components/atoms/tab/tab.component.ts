@@ -9,6 +9,8 @@ import { Component, Input } from '@angular/core';
 })
 export class TabComponent {
   @Input() title: string;
+  @Input() selected: boolean = false;
+  @Input() disabled: boolean = false;
 
   constructor() {
     this.title = '';
