@@ -5,6 +5,7 @@ import { TabComponent } from '../../atoms/tab/tab.component';
 
 @Component({
     selector: 'app-tab-group',
+    standalone: true,
     imports: [TabComponent],
     templateUrl: './tab-group.component.html',
     styleUrl: './tab-group.component.scss'

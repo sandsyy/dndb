@@ -5,6 +5,7 @@ import { MonsterComponent } from '../monster.component';
 
 @Component({
     selector: 'app-actions',
+    standalone: true,
     imports: [ChipComponent],
     templateUrl: './actions.component.html',
     styleUrl: './actions.component.scss'

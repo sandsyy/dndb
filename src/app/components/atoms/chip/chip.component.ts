@@ -3,6 +3,7 @@ import { RollComponent } from '../roll/roll.component';
 
 @Component({
     selector: 'app-chip',
+    standalone: true,
     imports: [RollComponent],
     templateUrl: './chip.component.html',
     styleUrl: './chip.component.scss'

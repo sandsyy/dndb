@@ -1,12 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { IconComponent } from '../icon/icon.component';
 import { CommonModule } from '@angular/common';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
     selector: 'app-roll',
+    standalone: true,
     imports: [IconComponent, CommonModule],
     templateUrl: './roll.component.html',
-    styleUrl: './roll.component.scss'
+    styleUrls: ['./roll.component.scss']
 })
 export class RollComponent {
 

@@ -6,6 +6,7 @@ import { MonsterComponent } from '../monster.component';
 
 @Component({
     selector: 'app-vitals',
+    standalone: true,
     imports: [ChipComponent, RollComponent],
     templateUrl: './vitals.component.html',
     styleUrl: './vitals.component.scss'

@@ -7,6 +7,7 @@ import { Dnd5eService, Monster } from '../../services/dnd-5e.service';
 
 @Component({
     selector: 'app-monster',
+    standalone: true,
     imports: [RouterOutlet, TabGroupComponent, RollComponent, SpinnerComponent],
     templateUrl: './monster.component.html',
     styleUrl: './monster.component.scss'
