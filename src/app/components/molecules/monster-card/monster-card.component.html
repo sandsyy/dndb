@@ -1,11 +1,11 @@
-<div class="monster-card">
+<div class="monster-card" (click)="navigateToMonster()">
     <div class="header">
         <div class="flex-col width-full">
             <div class="chip-text">
-                <h4>{{monster}}</h4>
+                <h4>{{monsterName}}</h4>
             </div>
             <div class="chip-text">
-                <p class="medium">Details</p>
+                <p class="medium">{{monsterSubtext}}</p>
             </div>
         </div>
         <div class="view-button">
@@ -15,8 +15,8 @@
     </div>
     <div class="divider-horizontal"></div>
     <div class="flex-row none">
-        <app-chip header="Challenge Rating" [chipType]="'roll'" [rollType]="'static'" content="6"></app-chip>
+        <app-chip header="Challenge Rating" [chipType]="'roll'" [rollType]="'static'" [content]="challengeRating"></app-chip>
         <div class="divider-vertical"></div>
-        <app-chip header="Armor Class" [chipType]="'roll'" [rollType]="'static'" content="3"></app-chip>
+        <app-chip header="Armor Class" [chipType]="'roll'" [rollType]="'static'" [content]="armorClass"></app-chip>
     </div>
 </div>
