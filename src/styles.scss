@@ -9,7 +9,7 @@
 @font-face {
     font-family: 'GT Pressura Light';
     src: url('/assets/fonts/GT-Pressura-Extended-Light-Trial.otf') format('opentype');
-    font-weight: 300;
+    font-weight: 200;
     font-style: normal;
     font-display: swap;
 }
@@ -17,18 +17,20 @@
 // Colors
 $primary-100: rgba(36, 35, 33, 1.00);
 $primary-50: rgba(36, 35, 33, 0.50);
+$primary-30: rgba(36, 35, 33, 0.30);
 $primary-20: rgba(36, 35, 33, 0.20);
 $primary-10: rgba(36, 35, 33, 0.10);
+$primary-05: rgba(36, 35, 33, 0.05);
 
 $secondary-100: rgba(255, 255, 255, 1.00);
 $secondary-50: rgba(255, 255, 255, 0.50);
 $secondary-20: rgba(255, 255, 255, 0.20);
 $secondary-10: rgba(255, 255, 255, 0.10);
 
-$accent-standard: rgba(70, 120, 243, 1.00);
-$accent-light: rgba(218, 228, 253, 1.00);
-$accent-dark: rgba(56, 96, 194, 1.00);
-$accent-hover: rgba(67, 112, 122, 1.00);
+$accent-standard: rgba(246, 0, 0, 1.00);
+$accent-light: rgba(246, 0, 0, 0.10);
+$accent-dark: rgba(122, 0, 0, 1.00);
+$accent-active: rgba(246, 0, 0, 0.20);
 
 
 * {

@@ -4,7 +4,7 @@
       {{mainValue}}
     </h4>
     @if (altValue) { <p>{{altValue}}</p> }
-    @if (iconName) {
+    @if (iconName && type === 'row') {
       <app-icon [name]="iconName"></app-icon>
     }
   </div>
@@ -19,7 +19,9 @@
 </div>
 }
 @else {
-<div class="icon">
-  <app-icon [name]="iconName"></app-icon>
+<div class="icon" (click)="toggleIcon()">
+  @if (iconVisible) {
+    <app-icon [name]="iconName" class="icon-toggle"></app-icon>
+  }
 </div>
 }

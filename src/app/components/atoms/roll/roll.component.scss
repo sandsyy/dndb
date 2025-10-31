@@ -34,16 +34,33 @@
     background-color: transparent;
 
     &:hover {
-        background-color: $primary-10;
+        background-color: $accent-light;
+        h4 {
+            color: $accent-standard;
+        }
+        p {
+            color: $accent-standard;
+        }
+        app-icon {
+            color: $accent-standard;
+        }
     }
 
     &:active {
-        background-color: $primary-20;
+        background-color: $accent-active;
+        h4 {
+            color: $accent-dark;
+        }
+        p {
+            color: $accent-dark;
+        }
+        app-icon {
+            color: $accent-dark;
+        }
     }
 }
 
 .static {
-    background-color: $primary-10;
     cursor: default;
 }
 
@@ -61,11 +78,11 @@
     cursor: pointer;
 
     &:hover {
-        background-color: $primary-10;
+        background-color: $primary-20;
     }
 
     &:active {
-        background-color: $primary-20;
+        background-color: $primary-30;
     }
 
     // Ensure the header row aligns content nicely when present
@@ -87,8 +104,12 @@
     border-radius: 12px;
     cursor: pointer;
 
-    &:active {
+    &:hover {
         background-color: $primary-20;
+    }
+
+    &:active {
+        background-color: $primary-30;
     }
 }
 
@@ -103,14 +124,22 @@ app-icon {
     transition: width 0.2s ease, opacity 0.2s ease, transform 0.2s ease, margin-left 0.2s ease;
 }
 
-// Show icon on hover with slide-in effect
+// Show icon on hover with slide-in effect (not for icon variant)
 .horizontal:hover app-icon,
 .static:hover app-icon,
-.vertical:hover app-icon,
-.icon:hover app-icon {
+.vertical:hover app-icon {
     width: 1.5rem;
     opacity: 1;
     transform: translateX(0);
     margin-left: 0;
+}
+
+// Icon toggle variant - no slide-in effect, instant show/hide
+.icon-toggle {
+    width: 1.5rem !important;
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    margin-left: 0 !important;
+    transition: none !important;
 }
 

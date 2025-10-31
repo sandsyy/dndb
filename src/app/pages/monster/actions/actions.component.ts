@@ -24,7 +24,8 @@ export class ActionsComponent {
   }
 
   // Format damage dice string (add spaces around + for readability)
-  formatDamageDice(dice: string): string {
+  formatDamageDice(dice: string | undefined): string {
+    if (!dice) return '';
     return dice.replace(/([+-])/g, ' $1 ');
   }
 
@@ -51,5 +52,49 @@ export class ActionsComponent {
     if (!this.monster.actions) return [];
     const midpoint = Math.ceil(this.monster.actions.length / 2);
     return this.monster.actions.slice(midpoint);
+  }
+
+  // Check if action has multiple damage options (nested in from.options)
+  // This is different from multiple damage types in one attack (like Bite or Longbow)
+  hasMultipleOptions(action: any): boolean {
+    if (!action.damage || action.damage.length === 0) return false;
+    
+    // Only return true if there's a nested options structure with multiple choices
+    // (e.g., Longsword with "One-handed" vs "Two-handed" options)
+    return action.damage[0]?.from?.options && action.damage[0].from.options.length > 1;
+  }
+
+  // Get damage options for actions with multiple choices
+  getDamageOptions(action: any): any[] {
+    if (!action.damage || action.damage.length === 0) {
+      return [];
+    }
+    
+    // Check for nested options structure (e.g., Longsword with choices in from.options)
+    if (action.damage[0]?.from?.options && action.damage[0].from.options.length > 1) {
+      return action.damage[0].from.options;
+    }
+    
+    // Fallback to single option or multiple direct entries
+    if (action.damage.length === 1 && !action.damage[0].from?.options) {
+      return [action.damage[0]];
+    }
+    
+    // Multiple direct entries (like Bite with multiple damage types)
+    return action.damage;
+  }
+
+  // Extract option name from the damage option (checks notes field directly)
+  getOptionName(action: any, optionIndex: number): string {
+    if (!this.hasMultipleOptions(action)) {
+      return '';
+    }
+
+    const options = this.getDamageOptions(action);
+    if (options && options[optionIndex] && options[optionIndex].notes) {
+      return options[optionIndex].notes;
+    }
+
+    return '';
   }
 }

@@ -13,25 +13,54 @@
                         
                         <!-- Hit and Damage Row (only for actions with attack data) -->
                         @if (hasAttackData(action)) {
-                            <div class="action-stats">
-                                <app-chip 
-                                    [header]="'Hit'" 
-                                    [type]="'roll'" 
-                                    [content]="formatAttackBonus(action.attack_bonus)"
-                                    [altValue]="extractReach(action.desc)"
-                                    class="stat-chip">
-                                </app-chip>
-                                
-                                <div class="divider-vertical"></div>
-                                
-                                <app-chip 
-                                    [header]="'Damage'" 
-                                    [type]="'roll'" 
-                                    [content]="action.damage && action.damage[0] ? formatDamageDice(action.damage[0].damage_dice) : ''"
-                                    [altValue]="action.damage && action.damage[0] ? action.damage[0].damage_type.name : ''"
-                                    class="stat-chip">
-                                </app-chip>
-                            </div>
+                            @if (hasMultipleOptions(action)) {
+                                @for (damageOption of getDamageOptions(action); track $index) {
+                                    <div class="action-stats">
+                                        <app-chip 
+                                            [header]="'Hit'" 
+                                            [chipType]="'roll'"
+                                            [rollType]="'row'"
+                                            [content]="formatAttackBonus(action.attack_bonus)"
+                                            [altValue]="extractReach(action.desc)"
+                                            [notes]="getOptionName(action, $index)"
+                                            class="stat-chip">
+                                        </app-chip>
+                                        
+                                        <div class="divider-vertical"></div>
+                                        
+                                        <app-chip 
+                                            [header]="'Damage'" 
+                                            [chipType]="'roll'"
+                                            [rollType]="'row'"
+                                            [content]="formatDamageDice(damageOption.damage_dice)"
+                                            [altValue]="damageOption.damage_type.name"
+                                            class="stat-chip">
+                                        </app-chip>
+                                    </div>
+                                }
+                            } @else {
+                                <div class="action-stats">
+                                    <app-chip 
+                                        [header]="'Hit'" 
+                                        [chipType]="'roll'"
+                                        [rollType]="'row'"
+                                        [content]="formatAttackBonus(action.attack_bonus)"
+                                        [altValue]="extractReach(action.desc)"
+                                        class="stat-chip">
+                                    </app-chip>
+                                    
+                                    <div class="divider-vertical"></div>
+                                    
+                                    <app-chip 
+                                        [header]="'Damage'" 
+                                        [chipType]="'roll'"
+                                        [rollType]="'row'"
+                                        [content]="action.damage && action.damage[0] ? formatDamageDice(action.damage[0].damage_dice) : ''"
+                                        [altValue]="action.damage && action.damage[0] ? action.damage[0].damage_type.name : ''"
+                                        class="stat-chip">
+                                    </app-chip>
+                                </div>
+                            }
                         }
                     </div>
                 }
@@ -49,25 +78,54 @@
                         
                         <!-- Hit and Damage Row (only for actions with attack data) -->
                         @if (hasAttackData(action)) {
-                            <div class="action-stats">
-                                <app-chip 
-                                    [header]="'Hit'" 
-                                    [type]="'roll'" 
-                                    [content]="formatAttackBonus(action.attack_bonus)"
-                                    [altValue]="extractReach(action.desc)"
-                                    class="stat-chip">
-                                </app-chip>
-                                
-                                <div class="divider-vertical"></div>
-                                
-                                <app-chip 
-                                    [header]="'Damage'" 
-                                    [type]="'roll'" 
-                                    [content]="action.damage && action.damage[0] ? formatDamageDice(action.damage[0].damage_dice) : ''"
-                                    [altValue]="action.damage && action.damage[0] ? action.damage[0].damage_type.name : ''"
-                                    class="stat-chip">
-                                </app-chip>
-                            </div>
+                            @if (hasMultipleOptions(action)) {
+                                @for (damageOption of getDamageOptions(action); track $index) {
+                                    <div class="action-stats">
+                                        <app-chip 
+                                            [header]="'Hit'" 
+                                            [chipType]="'roll'"
+                                            [rollType]="'row'"
+                                            [content]="formatAttackBonus(action.attack_bonus)"
+                                            [altValue]="extractReach(action.desc)"
+                                            [notes]="getOptionName(action, $index)"
+                                            class="stat-chip">
+                                        </app-chip>
+                                        
+                                        <div class="divider-vertical"></div>
+                                        
+                                        <app-chip 
+                                            [header]="'Damage'" 
+                                            [chipType]="'roll'"
+                                            [rollType]="'row'"
+                                            [content]="formatDamageDice(damageOption.damage_dice)"
+                                            [altValue]="damageOption.damage_type.name"
+                                            class="stat-chip">
+                                        </app-chip>
+                                    </div>
+                                }
+                            } @else {
+                                <div class="action-stats">
+                                    <app-chip 
+                                        [header]="'Hit'" 
+                                        [chipType]="'roll'"
+                                        [rollType]="'row'"
+                                        [content]="formatAttackBonus(action.attack_bonus)"
+                                        [altValue]="extractReach(action.desc)"
+                                        class="stat-chip">
+                                    </app-chip>
+                                    
+                                    <div class="divider-vertical"></div>
+                                    
+                                    <app-chip 
+                                        [header]="'Damage'" 
+                                        [chipType]="'roll'"
+                                        [rollType]="'row'"
+                                        [content]="action.damage && action.damage[0] ? formatDamageDice(action.damage[0].damage_dice) : ''"
+                                        [altValue]="action.damage && action.damage[0] ? action.damage[0].damage_type.name : ''"
+                                        class="stat-chip">
+                                    </app-chip>
+                                </div>
+                            }
                         }
                     </div>
                 }

@@ -5,7 +5,7 @@
         <div class="abilities-row">
             <app-chip 
                 [header]="'Strength'" 
-                [type]="'roll'" 
+                [chipType]="'roll'" 
                 [content]="getModifier(monster.strength)"
                 [altValue]="monster.strength?.toString() || '0'"
                 class="ability-chip">
@@ -15,7 +15,7 @@
             
             <app-chip 
                 [header]="'Stamina'" 
-                [type]="'roll'" 
+                [chipType]="'roll'" 
                 [content]="getModifier(monster.constitution)"
                 [altValue]="monster.constitution?.toString() || '0'"
                 class="ability-chip">
@@ -25,7 +25,7 @@
             
             <app-chip 
                 [header]="'Wisdom'" 
-                [type]="'roll'" 
+                [chipType]="'roll'" 
                 [content]="getModifier(monster.wisdom)"
                 [altValue]="monster.wisdom?.toString() || '0'"
                 class="ability-chip">
@@ -36,7 +36,7 @@
         <div class="abilities-row">
             <app-chip 
                 [header]="'Agility'" 
-                [type]="'roll'" 
+                [chipType]="'roll'" 
                 [content]="getModifier(monster.dexterity)"
                 [altValue]="monster.dexterity?.toString() || '0'"
                 class="ability-chip">
@@ -46,7 +46,7 @@
             
             <app-chip 
                 [header]="'Charisma'" 
-                [type]="'roll'" 
+                [chipType]="'roll'" 
                 [content]="getModifier(monster.charisma)"
                 [altValue]="monster.charisma?.toString() || '0'"
                 class="ability-chip">
@@ -56,7 +56,7 @@
             
             <app-chip 
                 [header]="'Intelligence'" 
-                [type]="'roll'" 
+                [chipType]="'roll'" 
                 [content]="getModifier(monster.intelligence)"
                 [altValue]="monster.intelligence?.toString() || '0'"
                 class="ability-chip">

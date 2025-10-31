@@ -1,13 +1,20 @@
 <div class="chip">
-    <div class="chip-header">
-        <p class="chip-header-text">{{header}}</p>
+    <div class="flex-row">
+        <div class="chip-text">
+            <p class="chip-header-text">{{header}}</p>
+        </div>
+        @if (notes) {
+            <div class="tag">
+                <p class="medium">{{notes}}</p>
+            </div>
+        }
     </div>
     <div class="chip-content">
-        @if (type === 'roll') {
-            <app-roll [type]="'row'" [mainValue]="content" [altValue]="altValue"></app-roll>
+        @if (chipType === 'roll') {
+            <app-roll [type]="rollType" [mainValue]="content" [altValue]="altValue"></app-roll>
         }
-        @else if (type === 'paragraph') {
-            <p>
+        @else if (chipType === 'paragraph') {
+            <p class="chip-text">
                 <ng-content select=".content-text"></ng-content>
             </p>
         }

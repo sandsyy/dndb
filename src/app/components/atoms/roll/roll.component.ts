@@ -16,10 +16,18 @@ export class RollComponent {
   @Input() iconName: string;
   @Input() altValue: string;
 
+  iconVisible: boolean = false;
+
   constructor() {
     this.type = '';
     this.mainValue = '';
     this.iconName = 'Dice6';
     this.altValue = '';
+  }
+
+  toggleIcon() {
+    if (this.type === 'icon') {
+      this.iconVisible = !this.iconVisible;
+    }
   }
 }

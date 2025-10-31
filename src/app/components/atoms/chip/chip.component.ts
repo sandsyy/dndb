@@ -11,14 +11,18 @@ import { RollComponent } from '../roll/roll.component';
 export class ChipComponent {
 
   @Input() content: string;
-  @Input({ required: true }) type: string;
+  @Input({ required: true }) chipType: string;
+  @Input() rollType: string;
   @Input() altValue: string;
   @Input() header: string;
-
+  @Input() notes: string;
+  
   constructor() {
     this.content = '';
-    this.type = 'roll';
+    this.chipType = 'roll';
+    this.rollType = 'row';
     this.altValue = '';
     this.header = '';
+    this.notes = '';
   }
 }
