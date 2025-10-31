@@ -1,0 +1,22 @@
+<div class="monster-card">
+    <div class="header">
+        <div class="flex-col width-full">
+            <div class="chip-text">
+                <h4>{{monster}}</h4>
+            </div>
+            <div class="chip-text">
+                <p class="medium">Details</p>
+            </div>
+        </div>
+        <div class="view-button">
+            <span class="button-text">View</span>
+            <app-icon [name]="'ChevronRight'"></app-icon>
+        </div>
+    </div>
+    <div class="divider-horizontal"></div>
+    <div class="flex-row none">
+        <app-chip header="Challenge Rating" [chipType]="'roll'" [rollType]="'static'" content="6"></app-chip>
+        <div class="divider-vertical"></div>
+        <app-chip header="Armor Class" [chipType]="'roll'" [rollType]="'static'" content="3"></app-chip>
+    </div>
+</div>

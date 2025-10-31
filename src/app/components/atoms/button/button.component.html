@@ -1,7 +1,7 @@
-<button class="button">
+<button class="button" [class.empty]="type === 'empty'">
     <app-icon *ngIf="leftIcon" [name]="leftIcon"></app-icon>
     <span class="button-text">
-        <ng-content></ng-content>
+        {{text}}
     </span>
     <app-icon *ngIf="rightIcon" [name]="rightIcon"></app-icon>
 </button>

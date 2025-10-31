@@ -1,0 +1,55 @@
+@use '../../../../styles' as *;
+
+:host {
+    display: flex;
+    width: 100%;
+}
+
+.monster-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px $primary-20;
+
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: none;
+        background-color: $primary-10;
+    }
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.view-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    padding: 12px;
+    border-radius: 8px;
+    
+    // Hide by default - slide in from right on hover
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(8px);
+    margin-right: -8px;
+    white-space: nowrap;
+    transition: max-width 0.2s ease, opacity 0.2s ease, transform 0.2s ease, margin-right 0.2s ease;
+}
+
+// Show view button on hover with slide-in effect
+.monster-card:hover .view-button {
+    max-width: 200px;
+    opacity: 1;
+    transform: translateX(0);
+    margin-right: 0;
+}

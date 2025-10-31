@@ -11,10 +11,14 @@ import { IconComponent } from '../icon/icon.component';
 export class ButtonComponent {
 
   @Input() leftIcon: string;
+  @Input() text: string;
   @Input() rightIcon: string;
+  @Input() type: string;
 
   constructor() {
     this.leftIcon = '';
+    this.text = '';
     this.rightIcon = '';
+    this.type = 'empty';
   }
 }

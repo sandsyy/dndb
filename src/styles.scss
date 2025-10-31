@@ -285,3 +285,24 @@ input {
     height: 1.5rem;
     width: 1.5rem;
 }
+
+// Dividers
+.divider-vertical {
+    width: 1px;
+    background-color: $primary-20;
+    align-self: stretch;
+}
+
+.divider-horizontal {
+    height: 1px;
+    width: 100%;
+    background-color: $primary-20;
+}
+
+.chip-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 4px;
+    width: 100%;
+}

@@ -10,6 +10,11 @@ export const routes: Routes = [
         component: MonsterComponent,
         children: [
             {
+                path: '',
+                redirectTo: 'vitals',
+                pathMatch: 'full'
+            },
+            {
                 path: 'vitals',
                 component: VitalsComponent
             },
