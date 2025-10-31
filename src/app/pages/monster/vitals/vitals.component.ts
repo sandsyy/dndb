@@ -1,13 +1,12 @@
 import { Component, Inject } from '@angular/core';
 import { Monster } from '../../../services/dnd-5e.service';
 import { ChipComponent } from '../../../components/atoms/chip/chip.component';
-import { RollComponent } from '../../../components/atoms/roll/roll.component';
 import { MonsterComponent } from '../monster.component';
 
 @Component({
     selector: 'app-vitals',
     standalone: true,
-    imports: [ChipComponent, RollComponent],
+    imports: [ChipComponent],
     templateUrl: './vitals.component.html',
     styleUrl: './vitals.component.scss'
 })

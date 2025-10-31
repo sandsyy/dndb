@@ -1,15 +1,15 @@
 @font-face {
-    font-family: 'GT Pressura';
-    src: url('/assets/fonts/GT-Pressura-Extended-Text-Trial.otf') format('opentype');
-    font-weight: 400;
+    font-family: 'GT Pressura Light';
+    src: url('/assets/fonts/GT-Pressura-Extended-Text.woff') format('woff');
+    font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'GT Pressura Light';
-    src: url('/assets/fonts/GT-Pressura-Extended-Light-Trial.otf') format('opentype');
-    font-weight: 200;
+    font-family: 'GT Pressura';
+    src: url('/assets/fonts/GT-Pressura-Extended-Regular-Trial.otf') format('opentype');
+    font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
@@ -34,7 +34,7 @@ $accent-active: rgba(246, 0, 0, 0.20);
 
 
 * {
-    font-family: 'GT Pressura', system-ui, -apple-system, sans-serif;
+    font-family: 'GT Pressura Light', system-ui, -apple-system, sans-serif;
     margin: 0;
     padding: 0;
     transition: all 0.25s ease;
@@ -46,28 +46,29 @@ $accent-active: rgba(246, 0, 0, 0.20);
     -moz-osx-font-smoothing: grayscale;
 }
 
+h3, h4 {
+    font-family: 'GT Pressura', system-ui, sans-serif;
+}
+
 // Text
 h1 {
-    font-family: 'GT Pressura', system-ui, sans-serif;
     font-size: 64px;
     line-height: 64px;
 }
 
 h2 {
-    font-family: 'GT Pressura Light', system-ui, sans-serif;
     font-size: 48px;
     line-height: 48px;
-    letter-spacing: -0.48px;
+    letter-spacing: -0.6px;
 }
 
 h3 {
-    font-family: 'GT Pressura Light', system-ui, sans-serif;
     font-size: 36px;
     line-height: 40px;
 }
 
 h4 {
-    font-family: 'GT Pressura Light', system-ui, sans-serif;
+    font-weight: 400;
     font-size: 24px;
     line-height: 28px;
 }

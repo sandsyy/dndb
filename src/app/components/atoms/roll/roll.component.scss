@@ -18,7 +18,7 @@
     align-items: center;
     gap: 8px;
     padding: 8px 12px;
-    border-radius: 12px;
+    border-radius: 8px;
 
     h4 {
         color: $primary-100;
@@ -31,7 +31,7 @@
 
 .horizontal {
     cursor: pointer;
-    background-color: transparent;
+    background-color: $primary-05;
 
     &:hover {
         background-color: $accent-light;
