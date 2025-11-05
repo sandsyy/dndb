@@ -3,43 +3,27 @@
         <div class="header-section">
             <div class="header-row">
                 <h2>Monsters</h2>
-                <app-button type="Secondary" text="Filter" [leftIcon]="'Filter'"></app-button>
-                <div class="search-input-wrapper">
-                    <app-icon [name]="'Search'" class="search-icon"></app-icon>
-                    <input 
-                        type="text" 
-                        class="search-input" 
-                        placeholder="Search"
-                        [(ngModel)]="searchTerm"
-                        (input)="onSearchChange()"
-                    />
-                    @if (searchTerm) {
-                        <app-icon [name]="'X'" class="clear-icon" (click)="searchTerm = ''; onSearchChange()"></app-icon>
-                    }
-                </div>
+                <!-- <app-button type="Secondary" text="Filter" [leftIcon]="'Filter'"></app-button> -->
+                <app-input placeholder="Search" [value]="searchTerm" (input)="onSearchChange($event)"></app-input>
             </div>
         </div>
         @if (loading && displayedMonsters.length === 0) {
-            <div class="loading-container">
-                <app-spinner size="large"></app-spinner>
-                <p class="medium">Loading monsters...</p>
-            </div>
+        <div class="loading-container">
+            <app-spinner size="large"></app-spinner>
+            <p class="medium">Loading monsters...</p>
+        </div>
         } @else {
-            <div class="monsters-grid">
-                @for (monster of displayedMonsters; track monster.index) {
-                    <app-monster-card 
-                        [monster]="monster.details || null"
-                        [monsterIndex]="monster.index"
-                    ></app-monster-card>
-                }
-            </div>
-            @if (loadingMore || !allMonstersLoaded) {
-                <div class="loading-more-container">
-                    <app-spinner size="medium"></app-spinner>
-                    <p class="medium">Loading more monsters...</p>
-                </div>
+        <div class="monsters-grid">
+            @for (monster of displayedMonsters; track monster.index) {
+            <app-monster-card [monster]="monster.details || null" [monsterIndex]="monster.index"></app-monster-card>
             }
+        </div>
+        @if (loadingMore || !allMonstersLoaded) {
+        <div class="loading-more-container">
+            <app-spinner size="medium"></app-spinner>
+            <p class="medium">Loading more monsters...</p>
+        </div>
+        }
         }
     </div>
 </div>
-

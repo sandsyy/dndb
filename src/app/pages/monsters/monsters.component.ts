@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, HostListener } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Dnd5eService, ApiReference, Monster } from '../../services/dnd-5e.service';
@@ -6,8 +6,9 @@ import { MonsterCardComponent } from '../../components/molecules/monster-card/mo
 import { ButtonComponent } from '../../components/atoms/button/button.component';
 import { IconComponent } from '../../components/atoms/icon/icon.component';
 import { SpinnerComponent } from '../../components/atoms/spinner/spinner.component';
-import { forkJoin, Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { InputComponent } from '../../components/atoms/input/input.component';
+import { Subject, of } from 'rxjs';
+import { map, catchError, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 interface MonsterWithDetails extends ApiReference {
   details?: Monster;
@@ -16,11 +17,11 @@ interface MonsterWithDetails extends ApiReference {
 @Component({
   selector: 'app-monsters',
   standalone: true,
-  imports: [CommonModule, FormsModule, MonsterCardComponent, ButtonComponent, IconComponent, SpinnerComponent],
+  imports: [CommonModule, FormsModule, MonsterCardComponent, ButtonComponent, IconComponent, SpinnerComponent, InputComponent],
   templateUrl: './monsters.component.html',
   styleUrl: './monsters.component.scss',
 })
-export class MonstersComponent implements OnInit, AfterViewInit {
+export class MonstersComponent implements OnInit, AfterViewInit, OnDestroy {
   allMonsters: MonsterWithDetails[] = [];
   filteredMonsters: MonsterWithDetails[] = [];
   displayedMonsters: MonsterWithDetails[] = []; // Only monsters to display
@@ -28,13 +29,27 @@ export class MonstersComponent implements OnInit, AfterViewInit {
   loading: boolean = true;
   loadingMore: boolean = false;
   allMonstersLoaded: boolean = false;
+  isSearching: boolean = false;
   
   private readonly LAZY_LOAD_SIZE = 20; // Load 20 monsters at a time
   private readonly REQUEST_DELAY = 150; // 150ms delay between individual requests
+  private readonly SEARCH_DEBOUNCE_TIME = 1000; // 1 second debounce for search
   private allMonsterRefs: ApiReference[] = [];
+  private filteredMonsterRefs: ApiReference[] = [];
   private loadedCount: number = 0;
+  private searchSubject = new Subject<string>();
+  private destroy$ = new Subject<void>();
 
-  constructor(private dnd5eService: Dnd5eService) {}
+  constructor(private dnd5eService: Dnd5eService) {
+    // Setup debounced search
+    this.searchSubject.pipe(
+      debounceTime(this.SEARCH_DEBOUNCE_TIME),
+      distinctUntilChanged(),
+      takeUntil(this.destroy$)
+    ).subscribe(searchTerm => {
+      this.performSearch(searchTerm);
+    });
+  }
 
   ngOnInit(): void {
     // Reset lazy loading state
@@ -53,6 +68,11 @@ export class MonstersComponent implements OnInit, AfterViewInit {
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
     }, 0);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -90,7 +110,9 @@ export class MonstersComponent implements OnInit, AfterViewInit {
   }
 
   loadNextBatch(): void {
-    if (this.loadedCount >= this.allMonsterRefs.length) {
+    const sourceRefs = this.searchTerm.trim() ? this.filteredMonsterRefs : this.allMonsterRefs;
+    
+    if (this.loadedCount >= sourceRefs.length) {
       this.allMonstersLoaded = true;
       this.loading = false;
       this.loadingMore = false;
@@ -99,8 +121,8 @@ export class MonstersComponent implements OnInit, AfterViewInit {
 
     this.loadingMore = true;
     const startIndex = this.loadedCount;
-    const endIndex = Math.min(startIndex + this.LAZY_LOAD_SIZE, this.allMonsterRefs.length);
-    const batchRefs = this.allMonsterRefs.slice(startIndex, endIndex);
+    const endIndex = Math.min(startIndex + this.LAZY_LOAD_SIZE, sourceRefs.length);
+    const batchRefs = sourceRefs.slice(startIndex, endIndex);
 
     // Load details for this batch
     this.loadMonsterDetailsBatch(batchRefs, () => {
@@ -141,10 +163,16 @@ export class MonstersComponent implements OnInit, AfterViewInit {
           })
         ).subscribe({
           next: (monsterWithDetails) => {
-            // Update the monster in allMonsters array
-            const monsterIndex = this.allMonsters.findIndex(m => m.index === monsterWithDetails.index);
-            if (monsterIndex !== -1) {
-              this.allMonsters[monsterIndex] = monsterWithDetails;
+            // Update the monster in allMonsters array if it exists there
+            const allMonsterIndex = this.allMonsters.findIndex(m => m.index === monsterWithDetails.index);
+            if (allMonsterIndex !== -1) {
+              this.allMonsters[allMonsterIndex] = monsterWithDetails;
+            }
+            
+            // Update the monster in filteredMonsters array if it exists there
+            const filteredMonsterIndex = this.filteredMonsters.findIndex(m => m.index === monsterWithDetails.index);
+            if (filteredMonsterIndex !== -1) {
+              this.filteredMonsters[filteredMonsterIndex] = monsterWithDetails;
             }
             
             completed++;
@@ -175,21 +203,54 @@ export class MonstersComponent implements OnInit, AfterViewInit {
     }
   }
 
+  onSearchChange(event: Event): void {
+    const inputValue = (event.target as HTMLInputElement).value;
+    this.searchTerm = inputValue;
+    
+    // Emit to debounced search subject - it will handle both search and reset
+    this.searchSubject.next(inputValue);
+  }
 
-  onSearchChange(): void {
-    if (!this.searchTerm.trim()) {
-      this.filteredMonsters = this.allMonsters;
-      this.updateDisplayedMonsters();
+  private resetToAllMonsters(): void {
+    this.filteredMonsters = [];
+    this.filteredMonsterRefs = [];
+    this.loadedCount = 0;
+    this.allMonstersLoaded = false;
+    this.isSearching = false;
+    this.loadNextBatch();
+  }
+
+  private performSearch(searchTerm: string): void {
+    const trimmedTerm = searchTerm.trim();
+    
+    if (!trimmedTerm) {
+      this.resetToAllMonsters();
       return;
     }
 
-    const searchLower = this.searchTerm.toLowerCase().trim();
-    this.filteredMonsters = this.allMonsters.filter(monster =>
-      monster.name.toLowerCase().includes(searchLower) ||
-      monster.details?.type?.toLowerCase().includes(searchLower) ||
-      monster.details?.size?.toLowerCase().includes(searchLower)
-    );
-    // When searching, show all filtered results (no lazy loading limit)
-    this.displayedMonsters = this.filteredMonsters;
+    this.isSearching = true;
+    this.loading = true;
+    this.loadedCount = 0;
+    this.allMonstersLoaded = false;
+    this.filteredMonsters = [];
+    
+    // Call API to search all monsters
+    this.dnd5eService.listMonsters({ name: trimmedTerm }).subscribe({
+      next: (response) => {
+        this.filteredMonsterRefs = response.results;
+        // Initialize filtered monsters with basic info
+        this.filteredMonsters = response.results.map(ref => ({ ...ref, details: undefined }));
+        
+        // Start loading details for the first batch
+        this.loadNextBatch();
+      },
+      error: (error) => {
+        console.error('Error searching monsters:', error);
+        this.loading = false;
+        this.isSearching = false;
+        this.filteredMonsters = [];
+        this.displayedMonsters = [];
+      }
+    });
   }
 }
