@@ -26,9 +26,12 @@ export class MenuComponent {
 
   onMenuItemClick(route: string): void {
     if (!this.isClosing) {
+      // Route immediately
+      this.router.navigate([route]);
+      // Start closing animation
       this.closingStart.emit();
+      // Close menu after animation completes
       setTimeout(() => {
-        this.router.navigate([route]);
         this.close.emit();
       }, 300); // Match animation duration
     }
