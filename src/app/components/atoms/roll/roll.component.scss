@@ -34,20 +34,14 @@
     background-color: $primary-05;
 
     &:hover {
-        background-color: $accent-light;
-        h4 {
-            color: $accent-standard;
-        }
-        p {
-            color: $accent-standard;
-        }
-        app-icon {
-            color: $accent-standard;
+        background-color: $accent-10;
+        h4, p, app-icon {
+            color: $accent-100;
         }
     }
 
     &:active {
-        background-color: $accent-active;
+        background-color: $accent-20;
         h4 {
             color: $accent-dark;
         }
@@ -78,11 +72,17 @@
     cursor: pointer;
 
     &:hover {
-        background-color: $primary-20;
+        background-color: $accent-10;
+        h4, p, app-icon {
+            color: $accent-100;
+        }
     }
 
     &:active {
-        background-color: $primary-30;
+        background-color: $accent-20;
+        h4, p, app-icon {
+            color: $accent-dark;
+        }
     }
 
     // Ensure the header row aligns content nicely when present
@@ -105,11 +105,17 @@
     cursor: pointer;
 
     &:hover {
-        background-color: $primary-20;
+        background-color: $accent-10;
+        h4, p, app-icon {
+            color: $accent-100;
+        }
     }
 
     &:active {
-        background-color: $primary-30;
+        background-color: $accent-20;
+        h4, p, app-icon {
+            color: $accent-dark;
+        }
     }
 }
 

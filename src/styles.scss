@@ -27,10 +27,12 @@ $secondary-50: rgba(255, 255, 255, 0.50);
 $secondary-20: rgba(255, 255, 255, 0.20);
 $secondary-10: rgba(255, 255, 255, 0.10);
 
-$accent-standard: rgba(246, 0, 0, 1.00);
-$accent-light: rgba(246, 0, 0, 0.10);
+$accent-100: rgba(246, 0, 0, 1.00);
+$accent-50: rgba(246, 0, 0, 0.50);
+$accent-30: rgba(246, 0, 0, 0.30);
+$accent-20: rgba(246, 0, 0, 0.20);
+$accent-10: rgba(246, 0, 0, 0.10);
 $accent-dark: rgba(122, 0, 0, 1.00);
-$accent-active: rgba(246, 0, 0, 0.20);
 
 
 * {
@@ -105,7 +107,7 @@ label {
 
 .logo {
     letter-spacing: -0.24px;
-    color: $accent-standard;
+    color: $accent-100;
 
     &.small {
         font-size: 16px;
@@ -138,7 +140,7 @@ input {
     }
 
     &.selected {
-        background-color: $accent-light;
+        background-color: $accent-10;
 
         p {
             color: $accent-dark;

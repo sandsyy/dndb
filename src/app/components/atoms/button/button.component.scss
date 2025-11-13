@@ -1,0 +1,39 @@
+@use '../../../../styles' as *;
+.empty {
+    background-color: transparent;
+    color: $primary-100;
+
+    &:hover {
+        background-color: $primary-10;
+    }  
+    
+    &:active {
+        background-color: $primary-20;
+    }
+}
+
+.accent {
+    background-color: $accent-100;
+    color: $secondary-100;
+
+    &:hover {
+        background-color: $accent-10;
+    }  
+    
+    &:active {
+        background-color: $accent-20;
+    }
+}
+
+.secondary {
+    background-color: $primary-10;
+    color: $primary-100;
+
+    &:hover {
+        background-color: $primary-20;
+    }  
+    
+    &:active {
+        background-color: $primary-30;
+    }
+}
