@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyBDZRonq2NxeWd6n7cqaeGCkR99LI7m2Ms",
   authDomain: "dndb-3be80.firebaseapp.com",
   projectId: "dndb-3be80",

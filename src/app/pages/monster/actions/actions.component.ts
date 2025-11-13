@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { Monster } from '../../../services/dnd-5e.service';
+import type { Monster } from '../../../types';
 import { ChipComponent } from '../../../components/atoms/chip/chip.component';
 import { MonsterComponent } from '../monster.component';
 

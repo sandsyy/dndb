@@ -1,10 +1,9 @@
 import { Component, OnInit, AfterViewInit, HostListener, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Dnd5eService, ApiReference, Monster } from '../../services/dnd-5e.service';
+import { Dnd5eService } from '../../services/dnd-5e.service';
+import type { ApiReference, Monster } from '../../types';
 import { MonsterCardComponent } from '../../components/molecules/monster-card/monster-card.component';
-import { ButtonComponent } from '../../components/atoms/button/button.component';
-import { IconComponent } from '../../components/atoms/icon/icon.component';
 import { SpinnerComponent } from '../../components/atoms/spinner/spinner.component';
 import { InputComponent } from '../../components/atoms/input/input.component';
 import { Subject, of } from 'rxjs';
@@ -17,7 +16,7 @@ interface MonsterWithDetails extends ApiReference {
 @Component({
   selector: 'app-monsters',
   standalone: true,
-  imports: [CommonModule, FormsModule, MonsterCardComponent, ButtonComponent, IconComponent, SpinnerComponent, InputComponent],
+  imports: [CommonModule, FormsModule, MonsterCardComponent, SpinnerComponent, InputComponent],
   templateUrl: './monsters.component.html',
   styleUrl: './monsters.component.scss',
 })

@@ -3,7 +3,8 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { TabGroupComponent } from '../../components/molecules/tab-group/tab-group.component';
 import { RollComponent } from '../../components/atoms/roll/roll.component';
 import { SpinnerComponent } from '../../components/atoms/spinner/spinner.component';
-import { Dnd5eService, Monster } from '../../services/dnd-5e.service';
+import { Dnd5eService } from '../../services/dnd-5e.service';
+import type { Monster } from '../../types';
 
 @Component({
     selector: 'app-monster',
