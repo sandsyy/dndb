@@ -4,7 +4,7 @@
             <div class="header-row">
                 <h2>Monsters</h2>
                 <!-- <app-button type="Secondary" text="Filter" [leftIcon]="'Filter'"></app-button> -->
-                <app-input placeholder="Search" [value]="searchTerm" (input)="onSearchChange($event)"></app-input>
+                <app-input id="search-input" placeholder="Search" [value]="searchTerm" (input)="onSearchChange($event)"></app-input>
             </div>
         </div>
         @if (loading && displayedMonsters.length === 0) {

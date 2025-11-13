@@ -1,0 +1,12 @@
+@use '../../../../styles' as *;
+
+input {
+    padding: 16px;
+    border-radius: 8px;
+
+    font-size: 16px;
+    line-height: 16px;
+    height: 16px;
+    min-height: 0;
+    border: 1px solid $primary-20;
+}

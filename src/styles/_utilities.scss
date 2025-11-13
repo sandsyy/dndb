@@ -1,0 +1,125 @@
+@use 'variables' as *;
+
+// Colors
+.primary-100 {
+    color: $primary-100;
+}
+
+.primary-50 {
+    color: $primary-50;
+}
+
+.primary-20 {
+    color: $primary-20;
+}
+
+.primary-10 {
+    color: $primary-10;
+}
+
+.bg-primary-100 {
+    background-color: $primary-100;
+}
+
+.bg-primary-50 {
+    background-color: $primary-50;
+}
+
+.bg-primary-20 {
+    background-color: $primary-20;
+}
+
+.bg-primary-10 {
+    background-color: $primary-10;
+}
+
+.medium {
+    color: $primary-50;
+}
+
+// Divs
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 100%;
+    width: 100%;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.grid {
+    display: grid;
+    gap: 8px;
+}
+
+.grid-cols-auto {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.stretch {
+    align-items: stretch;
+}
+
+.width-full {
+    width: 100%;
+}
+
+.none {
+    gap: 0;
+}
+
+.small {
+    gap: 4px;
+}
+
+.large {
+    gap: 16px;
+}
+
+.xlarge {
+    gap: 24px;
+}
+
+.xxlarge {
+    gap: 32px;
+}
+
+.padding-small {
+    padding: 4px;
+}
+
+.padding-medium {
+    padding: 8px;
+}
+
+.padding-large {
+    padding: 16px;
+}
+

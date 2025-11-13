@@ -1,0 +1,6 @@
+<div class="menu-overlay" [class.closing]="isClosing" (click)="onClose()"></div>
+<div class="menu-container" (click)="$event.stopPropagation()">
+    <app-button type="empty" text="Monsters" (buttonClick)="onMenuItemClick('/monsters')"></app-button>
+    <app-button type="empty" text="Characters" (buttonClick)="onMenuItemClick('/characters')"></app-button>
+    <app-button type="empty" text="Settings" (buttonClick)="onMenuItemClick('/settings')"></app-button>
+</div>

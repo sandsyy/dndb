@@ -1,0 +1,90 @@
+@use 'variables' as *;
+
+@font-face {
+    font-family: 'GT Pressura Light';
+    src: url('/assets/fonts/GT-Pressura-Extended-Text.woff') format('woff');
+    font-weight: 300;
+    letter-spacing: -0.3px;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Pressura';
+    src: url('/assets/fonts/GT-Pressura-Extended-Regular-Trial.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+h3, h4 {
+    font-family: 'GT Pressura', system-ui, sans-serif;
+}
+
+// Text
+h1 {
+    font-size: 64px;
+    line-height: 64px;
+}
+
+h2 {
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: -0.6px;
+}
+
+h3 {
+    font-size: 36px;
+    line-height: 40px;
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.4px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 20px;
+
+    &.bold {
+        font-family: 'GT Pressura', system-ui, sans-serif;
+    }
+
+    &.tight {
+        line-height: 1;
+    }
+}
+
+body {
+    font-size: 16px;
+    line-height: 16px;
+}
+
+label {
+    font-size: 16px;
+    line-height: 16px;
+    color: $primary-100;
+    padding: 4px 0px;
+}
+
+.center {
+    text-align: center;
+}
+
+.logo {
+    letter-spacing: -0.24px;
+    color: $accent-100;
+
+    &.small {
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+.bold {
+    font-family: 'GT Pressura', system-ui, sans-serif;
+}
+

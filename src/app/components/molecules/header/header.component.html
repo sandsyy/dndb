@@ -1,1 +1,7 @@
-<p>header works!</p>
+<div class="header-container">
+    <p class="accent-100 bold">DnDB</p>
+    <app-button type="empty" [leftIcon]="isMenuOpen ? 'X' : 'Menu'" (buttonClick)="toggleMenu()"></app-button>
+</div>
+@if (isMenuOpen) {
+    <app-menu [isClosing]="isClosing" (close)="closeMenu()" (closingStart)="startClosing()"></app-menu>
+}

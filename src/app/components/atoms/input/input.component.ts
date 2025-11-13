@@ -12,10 +12,12 @@ export class InputComponent {
 
   @Input() placeholder: string;
   @Input() value: string;
+  @Input({ required: true }) id: string;
 
   constructor() {
     this.placeholder = '';
     this.value = '';
+    this.id = '';
   }
 
   onInputChange(event: Event) {

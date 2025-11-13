@@ -1,10 +1,14 @@
-<button class="button" [class.empty]="type === 'empty'">
+<button 
+  class="button"
+  [ngClass]="type"
+  (click)="onClick()"
+>
     @if (leftIcon) {
         <app-icon [name]="leftIcon"></app-icon>
     }
-    <span class="button-text">
-        {{text}}
-    </span>
+    @if (text) {
+        <span class="button-text">{{text}}</span>
+    }
     @if (rightIcon) {
         <app-icon [name]="rightIcon"></app-icon>
     }

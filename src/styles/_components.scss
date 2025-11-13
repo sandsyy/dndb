@@ -1,0 +1,65 @@
+@use 'variables' as *;
+
+// Card
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 12px;
+    gap: 4px;
+
+    background-color: $primary-10;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $primary-20;
+    }
+
+    &.selected {
+        background-color: $accent-10;
+
+        p {
+            color: $accent-dark;
+        }
+    }
+}
+
+// Alignment Row
+.alignment-row {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0px;
+    gap: 12px;
+    width: 100%;
+}
+
+// Icon
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+// Dividers
+.divider-vertical {
+    width: 1px;
+    background-color: $primary-20;
+    align-self: stretch;
+}
+
+.divider-horizontal {
+    height: 1px;
+    width: 100%;
+    background-color: $primary-20;
+}
+
+.chip-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 4px;
+    width: 100%;
+}
+
