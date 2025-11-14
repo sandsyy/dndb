@@ -1,0 +1,57 @@
+<div class="auth-container">
+  <div class="auth-content">
+    <div class="auth-header">
+      <h2 class="primary-100">Welcome</h2>
+      <p class="primary-50">Select an option to continue to the site.</p>
+    </div>
+    
+    <div class="auth-options">
+      <div class="social-buttons flex-row">
+        <app-button 
+          type="secondary" 
+          text="Google"
+          (buttonClick)="onGoogleLogin()"
+          class="width-full"
+        >
+        </app-button>
+        <app-button 
+          type="secondary" 
+          text="Facebook"
+          (buttonClick)="onFacebookLogin()"
+          class="width-full"
+        >
+        </app-button>
+        <app-button 
+          type="secondary" 
+          text="Apple"
+          (buttonClick)="onAppleLogin()"
+          class="width-full"
+        >
+        </app-button>
+      </div>
+      
+      <div class="divider">
+        <div class="divider-line"></div>
+        <p class="divider-text primary-50">or</p>
+        <div class="divider-line"></div>
+      </div>
+      
+      <div class="auth-buttons flex-col">
+        <app-button 
+          type="accent" 
+          text="Email"
+          (buttonClick)="onEmailLogin()"
+          class="width-full"
+        >
+        </app-button>
+        <app-button 
+          type="secondary" 
+          text="Guest"
+          (buttonClick)="onGuestLogin()"
+          class="width-full"
+        >
+        </app-button>
+      </div>
+    </div>
+  </div>
+</div>

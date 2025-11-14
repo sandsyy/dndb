@@ -17,6 +17,7 @@ export class ButtonComponent {
   @Input() text: string;
   @Input() rightIcon: string;
   @Input() type: ButtonType;
+  @Input() class: string;
   @Output() buttonClick = new EventEmitter<void>();
 
   constructor() {
@@ -24,6 +25,17 @@ export class ButtonComponent {
     this.text = '';
     this.rightIcon = '';
     this.type = 'empty';
+    this.class = '';
+  }
+
+  get buttonClasses(): string[] {
+    const classes: string[] = [this.type];
+    if (this.class) {
+      // Split by space to handle multiple classes
+      const additionalClasses = this.class.trim().split(/\s+/).filter(c => c.length > 0);
+      classes.push(...additionalClasses);
+    }
+    return classes;
   }
 
   onClick(): void {

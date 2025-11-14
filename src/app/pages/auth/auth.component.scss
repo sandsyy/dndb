@@ -1,0 +1,100 @@
+@use '../../../styles' as *;
+
+:host {
+    display: flex;
+    width: 100%;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-color: $secondary-100;
+  padding: 50px 75px;
+  width: 100%;
+}
+
+.auth-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  padding-bottom: 150px;
+}
+
+.auth-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+  
+  h2 {
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: -1.92px;
+    margin: 0;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.32px;
+    margin: 0;
+  }
+}
+
+.auth-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  
+  app-button {
+    flex: 1;
+  }
+}
+
+.divider {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: $primary-20;
+  border-radius: 1px;
+}
+
+.divider-text {
+  font-size: 16px;
+  line-height: 16px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.auth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  
+  app-button {
+    width: 100%;
+  }
+}
